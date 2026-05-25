@@ -23,7 +23,7 @@ Esta aplicación corresponde al panel de administración del sistema.
 - [x] Catálogo: Productos, categorías e ingredientes con CRUD.
 - [x] Stock: ADMIN y STOCK pueden modificar stock/disponibilidad.
 - [x] Pedidos: Pantalla de gestión por estados.
-- [x] Usuarios: Pantalla de administración de usuarios y roles.
+- [x] Usuarios: Pantalla de administración de usuarios y roles. Filtrado por rol.
 
 ## Roles
 
