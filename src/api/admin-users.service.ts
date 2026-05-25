@@ -10,8 +10,14 @@ type AdminUsersApiResponse = {
   total: number;
 };
 
-export const getAdminUsers = async (): Promise<IAdminUser[]> => {
-  const response = await api.get<AdminUsersApiResponse>("/api/v1/admin/usuarios");
+export const getAdminUsers = async (
+  rol?: UserRole,
+): Promise<IAdminUser[]> => {
+  const response = await api.get<AdminUsersApiResponse>("/api/v1/admin/usuarios",
+  {
+    params: rol ? { rol } : {},
+  });
+
   return response.data.data;
 };
 

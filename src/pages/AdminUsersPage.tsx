@@ -34,14 +34,15 @@ export const AdminUsersPage = () => {
     disabled: false,
   });
   const [error, setError] = useState("");
-
+  const [selectedRoleFilter, setSelectedRoleFilter] = useState<UserRole | "ALL">("ALL");
+  
   const {
     data: users = [],
     isLoading,
     isError,
   } = useQuery<IAdminUser[]>({
-    queryKey: ["admin-users"],
-    queryFn: getAdminUsers,
+    queryKey: ["admin-users", selectedRoleFilter],
+    queryFn: () => getAdminUsers(selectedRoleFilter === "ALL" ? undefined : selectedRoleFilter),
     staleTime: 1000 * 60,
   });
 
@@ -237,8 +238,26 @@ export const AdminUsersPage = () => {
             {users.length} usuarios en total
           </p>
         </div>
-
+        <div className="mb-4">
+          <select
+            value={selectedRoleFilter}
+            onChange={(e) =>
+              setSelectedRoleFilter(
+                e.target.value as UserRole | "ALL"
+              )
+            }
+            className="w-full sm:w-52 px-3 py-2 rounded-lg border border-gray-200 bg-white text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+              <option value="ALL">Todos los roles</option>
+              <option value="ADMIN">ADMIN</option>
+              <option value="STOCK">STOCK</option>
+              <option value="PEDIDOS">PEDIDOS</option>
+              <option value="CLIENT">CLIENT</option>
+          </select>
+        </div>
         <div className="rounded-2xl border border-gray-100 overflow-hidden shadow-sm bg-white">
+          <div className="mb-4">
+          </div> 
           <table className="w-full table-fixed text-sm">
             <thead>
               {table.getHeaderGroups().map((headerGroup) => (
