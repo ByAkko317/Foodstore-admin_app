@@ -1,4 +1,5 @@
 # Parcial Frontend - Admin App
+#### Link video: https://drive.google.com/file/d/1qiGORFaq7LmZp-yl2_4U6FDd1Q13wPVp/view?usp=drive_link
 
 Frontend desarrollado con React + Vite + TypeScript para la Parte 2 del parcial fullstack.
 
